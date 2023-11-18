@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.hilt)
     alias(libs.plugins.jetbrainsKapt)
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -63,12 +64,21 @@ dependencies {
     implementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(platform(libs.androidx.compose.bom))
 
+    // Kapt & KSP
+    kapt(libs.bundles.hiltKapt)
+    ksp(libs.androidx.room.compiler)
+
     // AndroidX
     implementation(libs.bundles.androidx)
 
+    // Accompianist
+    implementation(libs.bundles.accompianist)
+
     // Hilt
-    kapt(libs.bundles.hiltKapt)
     implementation(libs.bundles.hilt)
+
+    // Square-up
+    implementation(libs.bundles.squareup)
 
     // Tests
     testImplementation(libs.junit)
